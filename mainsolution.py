@@ -12,6 +12,7 @@ def multiply():
     print("This is function multiply")
     return
 
+print("trying")
 add()
 delete()
 multiply()
