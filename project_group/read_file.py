@@ -1,13 +1,22 @@
 from pathlib import Path
+home=Path.home()
 
-#file_path= Path.home()/"project_group"/"csv_reports"
+file_path=home/"TeamE"/"project_group"/"csv_reports"
 
-#with file_path.open(mode="r",encoding="UTF-8") as file:
-    #text=file.read()
-#print(text)
+with file_path.open(mode="r",encoding="UTF-8") as file:
+    text=file.read("Cash On Hand")
 
-home =Path.home()
-print(home)
+print(text)
 
-file_path = home/"P4B"
-print(file_path.exists())
+
+from pathlib import Path
+home=Path.home()
+
+file_path1=home/"TeamE"/"project_group"
+file_path2=home/"TeamE"/"project_group"/"csv_reports"
+file_path3= home/"project_group"/"csv_reports"
+file_path4=home/"TeamE"/"project_group"/"csv_reports"/"Cash On Hand"
+print(file_path1.exists())
+print(file_path2.exists())
+print(file_path3.exists())
+print(file_path4.exists())
