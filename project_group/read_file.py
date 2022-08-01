@@ -1,15 +1,16 @@
 from pathlib import Path
 import csv
 
-home=Path.home()
-file_path=home/"TeamE"/"project_group"/"csv_reports"
+home = Path.cwd()
+file_path=home/"project_group"/"csv_reports"
 print(file_path.exists())
 
 for file in file_path.glob("*.csv"):
     print(file)
 
-with file_path.open(mode="r",encoding="UTF-8") as file:
-    text=file.read("Cash On Hand")
+COH = home/"project_group"/"csv_reports"/"Cash On Hand.csv"
+with COH.open(mode="r",encoding="UTF-8") as file:
+    text=file.read()
 
 print(text)
 
