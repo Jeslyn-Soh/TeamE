@@ -1,7 +1,12 @@
 from pathlib import Path
-home=Path.home()
+import csv
 
+home=Path.home()
 file_path=home/"TeamE"/"project_group"/"csv_reports"
+print(file_path.exists())
+
+for file in file_path.glob("*.csv"):
+    print(file)
 
 with file_path.open(mode="r",encoding="UTF-8") as file:
     text=file.read("Cash On Hand")
