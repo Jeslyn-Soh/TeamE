@@ -3,10 +3,6 @@ import csv, re
 
 home = Path.cwd()
 file_path=home/"project_group"/"csv_reports"
-#print(file_path.exists())
-
-#for file in file_path.glob("*.csv"):
-    #print(file)
 
 OH = home/"project_group"/"csv_reports"/"Overheads.csv"
 with OH.open(mode="r",encoding="UTF-8") as file:
