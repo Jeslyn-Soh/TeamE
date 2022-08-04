@@ -3,6 +3,9 @@ api_key = "IUMVK4SLEPVSK1MW"
 from xml.dom import UserDataHandler
 import requests
 
+#function=CURRENCY_EXCHANGE_RATE
+#from_currency = "USD"
+#to_currency = "SGD"
 url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey=IUMVK4SLEPVSK1MW'
 
 response = requests.get(url)
@@ -18,9 +21,7 @@ file_path = home/"project_group"/"csv_reports"
 fp_txt = home/"project_group"/"summary_report.txt"
 fp_txt.touch()
 
-#function = "FX_WEEKLY"
-#from_currency = "USD"
-#to_currency = "SGD"
+
 
 with fp_txt.open(mode = "w") as file:
     #USD = re.findall(pattern = ["1. From_Currency Code.+"], string = final_response)
