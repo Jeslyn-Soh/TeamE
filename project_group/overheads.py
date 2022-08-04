@@ -29,6 +29,11 @@ with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
 
 #JESLYN
 #api_key = "IUMVK4SLEPVSK1MW"
+fp_txt.touch()
+
+empty_list = []
+
+api_key = "IUMVK4SLEPVSK1MW"
 
 #import requests
 
@@ -51,3 +56,12 @@ with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
 #        empty_list.append(ans)
 #        break
 #    writer.writerow(empty_list)
+with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
+    writer = csv.writer(file)
+    max_OH = max(re.findall(pattern = "[0-9].+.[0-9].+", string = text))
+    cat = max(re.findall(pattern = "[A-Z].+Expense ", string = text))
+    ans = f"[HIGHEST OVERHEADS] {cat}: SGD{float(max_OH) * float(rate)}"
+    for info in ans:
+        empty_list.append(ans)
+        break
+    writer.writerow(empty_list)
