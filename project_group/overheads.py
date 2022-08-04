@@ -20,11 +20,6 @@ fp_txt.touch()
 #create a new txt file named"summary_report.txt"
 
 empty_list = []
-
-api_key = "IUMVK4SLEPVSK1MW"
-
-empty_list = []
-
 api_key = "IUMVK4SLEPVSK1MW"
 
 import requests
