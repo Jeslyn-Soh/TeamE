@@ -23,11 +23,11 @@ fp_txt.touch()
 
 
 
-with fp_txt.open(mode = "w") as file:
+with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
     #USD = re.findall(pattern = ["1. From_Currency Code.+"], string = final_response)
     #SGD = re.findall(pattern = ["3. To_Currency Code.+"], string = final_response)
     rate = (final_response["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
-    ans_rate = f"[REAL TIME CURRENCY CONVERSION RATE]  = SGD{rate}"
+    ans_rate = f"[REAL TIME CURRENCY CONVERSION RATE]  = USD1 = SGD{rate}"
     for info in url:
         file.write(ans_rate)
         break
