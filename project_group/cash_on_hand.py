@@ -10,11 +10,13 @@ COH = home/"project_group"/"csv_reports"/"Cash On Hand.csv"
 #with COH.open(mode="r",encoding="UTF-8")as file :
 #    text = file.read()
 #    print(text("Day"))
-
+empty_list = []
 with COH.open(mode="r",encoding="UTF-8") as file:
     COHreader = csv.DictReader(file)
     for row in COHreader:
-        print(row["Cash On Hand"])
+        list = ([row["Cash On Hand"]])
+        
+
 
 
 
