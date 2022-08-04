@@ -3,6 +3,9 @@ api_key = "IUMVK4SLEPVSK1MW"
 from xml.dom import UserDataHandler
 import requests
 
+#function=CURRENCY_EXCHANGE_RATE
+#from_currency = "USD"
+#to_currency = "SGD"
 url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey=IUMVK4SLEPVSK1MW'
 
 response = requests.get(url)
