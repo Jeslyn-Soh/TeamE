@@ -15,18 +15,6 @@ print(fp_txt.exists())
 
 empty_list = []
 
-#MEEEE
-with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
-    writer = csv.writer(file)
-    max1=max(re.findall(pattern="[0-9][0-9].+",string=text))
-    cat1=max(re.findall(pattern="[A-Z].+,[0-9][0-9].+",string=text))
-    maxt = f"[HIGHEST OVERHEADS] {cat1} SGD:{max1}"
-    for ans in text :
-        ans=empty_list.append(maxt)
-        break
-    writer.writerow(empty_list)
-
-#JESLYN
 with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
     writer = csv.writer(file)
     max_OH = max(re.findall(pattern = ("[0-9].+.[0-9].+"), string = text))
