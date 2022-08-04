@@ -20,8 +20,7 @@ file_path = home/"project_group"/"csv_reports"
 #use '/'to extend path to extand the file path
 
 fp_txt = home/"project_group"/"summary_report.txt"
-fp_txt.touch()
-#create a new txt file named"summary_report.txt"
+
 
 with fp_txt.open(mode = "w") as file:
     #open the file in write mode to place the data of the exchange rate inside
