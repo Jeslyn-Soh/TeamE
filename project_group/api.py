@@ -23,7 +23,7 @@ fp_txt = home/"project_group"/"summary_report.txt"
 
 
 with fp_txt.open(mode = "w",encoding="UTF-8", newline="") as file:
-    #open the file in write mode to place the data of the exchange rate inside
+    #open the file in read mode to access the data inside
     rate = (final_response["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
     #'rate' is a variable assigned to find the exchange rate from a list in another list
     ans_rate = f"[REAL TIME CURRENCY CONVERSION RATE] USD1 = SGD{rate}"
