@@ -1,5 +1,9 @@
 import csv
+<<<<<<< HEAD
 with open("Profits and Loss.csv",'rt')as f:
+=======
+with open("pnl.csv",'rt')as f:
+>>>>>>> 2acea85f51d4dfa6737d1d824ed2fc8bab4dfc8d
     data = csv.reader(f)
     prev_day = 0
     prev_profit = 0
@@ -16,6 +20,7 @@ with open("Profits and Loss.csv",'rt')as f:
             prev_profit = net_profit
         counter += 1
 
+<<<<<<< HEAD
 empty_list = []
 prev_d = "Day"
 
@@ -29,6 +34,17 @@ PL = home/"project_group"/"csv_reports"/"Profits and Loss.csv"
 
 with open(PL,"rt")as f:
 
+=======
+from pathlib import Path
+import csv, re
+
+import csv
+
+with open("pnl.csv",'rt')as f:
+    #home = Path.cwd()
+    #file_path=home/"project_group"/"pnl.csv"
+    #PL = home/"project_group"/"pnl.csv"
+>>>>>>> 2acea85f51d4dfa6737d1d824ed2fc8bab4dfc8d
     data = csv.reader(f)
     prev_day = 0
     prev_profit = 0
@@ -45,6 +61,7 @@ with open(PL,"rt")as f:
             prev_profit = net_profit
         counter += 1
 
+<<<<<<< HEAD
 
 
 
@@ -86,4 +103,30 @@ with COH.open(mode="r",encoding="UTF-8") as file:
         counter += 1
 
 
+=======
+with PL.open(mode="r",encoding="UTF-8") as file:
+    PLreader = csv.DictReader(file)
+    print("Day, Net Profit")
+    for row in PLreader:
+        print(row["Day"],row["Net Profit"])
+    #day = int(row["Day"])
+    #while day < 50:
+        #day += 1
+        #print(day)
+
+fp_txt = home/"project_group"/"summary_report.txt"
+fp_txt.touch()
+print(fp_txt.exists())
+
+def diff():
+    day = 4
+    a = 20
+    b = 30   
+    sind = a-b
+    if sind > 0:
+        return f"[NET PROFIT SURPLUS] DAY: {day}, AMOUNT: SGD{sind}"
+    else:
+        return f"[NET PROFIT DEFICIT] DAY: {day}, AMOUNT: SGD{-1 * sind}"
+print(diff())
+>>>>>>> 2acea85f51d4dfa6737d1d824ed2fc8bab4dfc8d
 

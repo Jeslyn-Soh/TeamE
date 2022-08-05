@@ -8,6 +8,7 @@ file_path=home/"project_group"/"csv_reports"
 
 COH = home/"project_group"/"csv_reports"/"Cash On Hand.csv"
 
+
 empty_list = []
 with COH.open(mode="r",encoding="UTF-8") as file:
     COHreader = csv.DictReader(file)
@@ -32,6 +33,7 @@ with COH.open(mode="r",encoding="UTF-8") as file:
             prev_day = day
             prev_coh = coh
         counter += 1
+
 
 
 
