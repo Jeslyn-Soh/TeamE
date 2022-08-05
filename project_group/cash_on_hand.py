@@ -17,6 +17,7 @@ with COH.open(mode="r",encoding="UTF-8") as file:
     COHreader = csv.DictReader(file)
     for row in COHreader:
         list = ([row["Cash On Hand"]])
+    #reading and extraxt the data from Cash On Hand by using 'r' mode
         
 
 from xml.dom import UserDataHandler
@@ -37,9 +38,8 @@ fp_txt = home/"project_group"/"summary_report.txt"
 fp_txt.touch()
 #create a new txt file named "summary_report" by using 'touch' method
 
-class summary2:
 
- with fp_txt.open(mode = "w",encoding="UTF-8", newline="") as file:
+with fp_txt.open(mode = "r",encoding="UTF-8", newline="") as file:
     #open the file in read mode to access the data inside
     rate = (final_response["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
     #using the function to exchange the currency,assigned it as rate
@@ -55,14 +55,24 @@ class summary2:
                 if counter > 1:
                     if int(prev_coh) > int(coh):
                         COH_diff = int(prev_coh) - int(coh)
-                        FCOH_diff = (COH_diff * float(rate)) 
-                        print(f"[CASH DEFICIT] DAY: {day} AMOUNT: SGD{FCOH_diff}")
+                        FCOH_diff = f"[CASH DEFICIT] DAY: {day} AMOUNT: SGD{COH_diff * float(rate)}"
+                        print(FCOH_diff)
          #using csv.reader to read the file then by using the function to find the NET PROFIT DEFICIT
-                    
-                        print("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
+                        CSP = "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
+                        print(CSP)
                         
                         #only need to come out 1 time if all days coh is higher than the on before
                 prev_day = day
                 prev_coh = coh
             counter += 1
-            
+
+class summary2:
+#assign a function as summary2 for modularisation in main.py
+    
+    empty_list =[]
+    with fp_txt.open(mode="w",encoding="UTF-8",newline="") as file :
+      writer=csv.writer(file)
+      empty_list.append(FCOH_diff)
+      writer.writerow(empty_list)
+    #writting file FCOH_diff into summary_report.txt by using 'w' mode
+
