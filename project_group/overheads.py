@@ -35,7 +35,9 @@ with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
     rate = (final_response["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
 #open the file in write mode to find the exchange rate in the data
 
-with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
+class summary3:
+
+ with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
     writer = csv.writer(file)
     #open the file in write mode to place the data of the highest expense in it
     max_OH = max(re.findall(pattern = "[0-9].+.[0-9].+", string = text))

@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-[HIGHEST OVERHEADS] Shipping Expense: SGD49.1662665
-=======
-[HIGHEST OVERHEADS] Shipping Expense: SGD49.25916449999999
->>>>>>> 2acea85f51d4dfa6737d1d824ed2fc8bab4dfc8d

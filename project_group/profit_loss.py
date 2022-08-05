@@ -1,105 +1,61 @@
-import csv
 
-with open("Profits and Loss.csv",'rt')as f:
-    data = csv.reader(f)
-    prev_day = 0
-    prev_profit = 0
-    counter = 0
-    for row in data:
-        if counter >0:
-            day = row[0]
-            net_profit = row[4]
-            if counter > 1:
-                if int(prev_profit) > int(net_profit):
-                    profit_diff = int(prev_profit) - int(net_profit)
-                    print("The Net profit difference between day",prev_day,"and",day,"is $",profit_diff)
-            prev_day = day
-            prev_profit = net_profit
-        counter += 1
+from pathlib import Path 
+#import Path method from pathlib
+import csv, re           
+#import csv module and regular expression module
 
+home = Path.cwd()                              
+#assign home as the class method returns a Path object representing the current working directory or CWD
+file_path = home/"project_group"/"csv_reports" 
+#use '/'to extend path to extand the file path
 
-empty_list = []
-prev_d = "Day"
+PNL = home/"project_group"/"csv_reports"/"Profits and Loss.csv"
+#assign PNL as the path for profit and loss.csv
 
+api_key = "IUMVK4SLEPVSK1MW"
+#get a api key to use some easier syntax in its place
 
+from xml.dom import UserDataHandler
+#import UserDataHandler method from xml.dom
+import requests
+#import requests module
 
-from pathlib import Path
-import csv, re
+url = 'https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=USD&to_currency=SGD&apikey=IUMVK4SLEPVSK1MW'
+#API URL of a function to change the CURRENCY from USD to SGD
 
-home = Path.cwd()
-PL = home/"project_group"/"csv_reports"/"Profits and Loss.csv"
+response = requests.get(url)
+#use a get method to request access to the function
+#assigned it as an object called 'response' 
+final_response = response.json()
+#get data from the url about the currency exchange rate from USD to SGD
 
-with open(PL,"rt")as f:
+fp_txt = home/"project_group"/"summary_report.txt"
+fp_txt.touch()
+#create a new txt file named "summary_report" by using 'touch' method
 
-
- from pathlib import Path
-import csv, re
-
-import csv
-
-with open("pnl.csv",'rt')as f:
-    #home = Path.cwd()
-    #file_path=home/"project_group"/"pnl.csv"
-    #PL = home/"project_group"/"pnl.csv"
-
-    data = csv.reader(f)
-    prev_day = 0
-    prev_profit = 0
-    counter = 0
-    for row in data:
-        if counter >0:
-            day = row[0]
-            net_profit = row[4]
-            if counter > 1:
-                if int(prev_profit) > int(net_profit):
-                    profit_diff = int(prev_profit) - int(net_profit)
-                    print("The Net profit difference between day",prev_day,"and",day,"is $",profit_diff)
-            prev_day = day
-            prev_profit = net_profit
-        counter += 1
-
-
-
-
-
-
-
-from pathlib import Path
-import csv
-import re
-
-
-home = Path.cwd()
-file_path=home/"project_group"/"csv_reports"
-
-PL = home/"project_group"/"csv_reports"/"Profits and Loss.csv"
-
-empty_list = []
-with PL.open(mode="r",encoding="UTF-8") as file:
-    PLreader = csv.DictReader(file)
-    print("Net Profit")
-    for row in PLreader:
-        coh = row["Net Profit"]
-        print(coh)
+class summary4:
     
-with PL.open(mode="r",encoding="UTF-8") as file:
-    data = csv.reader(file)
-    prev_day = 0
-    prev_profit = 0
-    counter = 0
-    for row in data:
-        if counter >0:
-            day = row[0]
-            net_profit = row[4]
-            if counter > 1:
-                if int(prev_profit) > int(net_profit):
-                    profit_diff = int(prev_profit) - int(net_profit)
-                    print("[PROFIT DEFICIT]",prev_day,"and",day,"is $",profit_diff)
-            prev_day = day
-            prev_profit = net_profit
-        counter += 1
-
-
-
-
-
+ with fp_txt.open(mode = "r",encoding="UTF-8", newline="") as file:
+    #open the file in read mode to access the data inside
+    rate = (final_response["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
+    #using the function to exchange the currency,assigned it as rate
+    with PNL.open(mode="r",encoding="UTF-8") as file:
+        data = csv.reader(file)
+        prev_day = 0
+        prev_np = 0
+        counter = 0
+        for row in data:
+            if counter > 0:
+                day = row[0]
+                np = row[4]
+                if counter > 1:
+                    if int(prev_np) > int(np):
+                        np_diff = int(np) - int(np)
+        #using csv.reader to read the file then by using the function to find the NET PROFIT DEFICIT
+                        print(f"[NET PROFIT DEFICIT] DAY: {day} AMOUNT: SGD{(np_diff * rate) * -1}")
+                    else:
+                        print("[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
+                        #only need to come out one time if all days np is higher than the on before
+                prev_day = day
+                prev_np = np
+            counter += 1
