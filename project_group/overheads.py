@@ -35,7 +35,7 @@ with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
     rate = (final_response["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
 #open the file in write mode to find the exchange rate in the data
 
-class summary4:
+class summary2:
 #assign the function as summary4 for the modularisation in main.py
 
  with fp_txt.open(mode = "w", encoding="UTF-8", newline="") as file:
