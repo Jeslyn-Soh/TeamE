@@ -37,10 +37,11 @@ fp_txt = home/"project_group"/"summary_report.txt"
 fp_txt.touch()
 #create a new txt file named "summary_report" by using 'touch' method
 
-class summary2:
+class summary3:
 
  with fp_txt.open(mode = "w",encoding="UTF-8", newline="") as file:
-    #open the file in read mode to access the data inside
+    #open the file in write mode to access the data inside
+    writer = csv.writer(file)
     rate = (final_response["Realtime Currency Exchange Rate"]["5. Exchange Rate"])
     #using the function to exchange the currency,assigned it as rate
     with COH.open(mode="r",encoding="UTF-8") as file:
@@ -56,13 +57,15 @@ class summary2:
                     if int(prev_coh) > int(coh):
                         COH_diff = int(prev_coh) - int(coh)
                         FCOH_diff = (COH_diff * float(rate)) 
-                        print(f"[CASH DEFICIT] DAY: {day} AMOUNT: SGD{FCOH_diff}")
+                        ans = f"[CASH DEFICIT] DAY: {day} AMOUNT: SGD{FCOH_diff}"
          #using csv.reader to read the file then by using the function to find the NET PROFIT DEFICIT
-                    
-                        print("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
-                        
-                        #only need to come out 1 time if all days coh is higher than the on before
+                    else:
+                        ans = "[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY"
                 prev_day = day
                 prev_coh = coh
             counter += 1
+    for info in ans:
+        empty_list.append(ans)
+        break
+    writer.writerow(empty_list)
             
