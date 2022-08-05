@@ -50,11 +50,13 @@ class summary4:
                 np = row[4]
                 if counter > 1:
                     if int(prev_np) > int(np):
-                        np_diff = int(np) - int(np)
+                        np_diff = int(prev_np) - int(np)
+                        fnp_diff = (np_diff*float(rate) *-1)
         #using csv.reader to read the file then by using the function to find the NET PROFIT DEFICIT
-                        print(f"[NET PROFIT DEFICIT] DAY: {day} AMOUNT: SGD{(np_diff * rate) * -1}")
+                        print(f"[NET PROFIT DEFICIT] DAY: {day} AMOUNT: SGD{fnp_diff}")
                     else:
                         print("[NET PROFIT SURPLUS] NET PROFIT ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
+                        break
                         #only need to come out one time if all days np is higher than the on before
                 prev_day = day
                 prev_np = np

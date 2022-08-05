@@ -55,10 +55,12 @@ class summary2:
                 if counter > 1:
                     if int(prev_coh) > int(coh):
                         COH_diff = int(prev_coh) - int(coh)
-                        print(f"[CASH DEFICIT] DAY: {day} AMOUNT: SGD{(COH_diff * rate) * -1}")
+                        FCOH_diff = (COH_diff * float(rate)) 
+                        print(f"[CASH DEFICIT] DAY: {day} AMOUNT: SGD{FCOH_diff}")
          #using csv.reader to read the file then by using the function to find the NET PROFIT DEFICIT
-                    else:
+                    
                         print("[CASH SURPLUS] CASH ON EACH DAY IS HIGHER THAN THE PREVIOUS DAY")
+                        
                         #only need to come out 1 time if all days coh is higher than the on before
                 prev_day = day
                 prev_coh = coh
