@@ -17,6 +17,7 @@ with COH.open(mode="r",encoding="UTF-8") as file:
     COHreader = csv.DictReader(file)
     for row in COHreader:
         list = ([row["Cash On Hand"]])
+    #reading and extraxt the data from Cash On Hand by using 'r' mode
         
 
 from xml.dom import UserDataHandler
